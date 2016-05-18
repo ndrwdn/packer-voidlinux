@@ -1,0 +1,57 @@
+{
+  "variables": {
+    "version": null
+  },
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "iso_url": "https://repo.voidlinux.eu/live/current/void-live-x86_64-20160420.iso",
+      "iso_checksum": "24cd5831c89c32b13ef114110a2c055900029de509fa5d8a5995beff89f12f7c",
+      "iso_checksum_type": "sha256",
+      "guest_os_type": "Linux_64",
+      "guest_additions_mode": "disable",
+      "headless": true,
+      "boot_wait": "5s",
+      "boot_command": [
+        "<enter>"
+      ],
+      "hard_drive_interface": "sata",
+      "disk_size": 12288,
+      "ssh_username": "root",
+      "ssh_password": "voidlinux",
+      "ssh_wait_timeout": "2m",
+      "ssh_pty": true,
+      "shutdown_command": "sudo poweroff",
+      "vboxmanage": [
+        ["modifyvm", "{{.Name}}", "--memory", "1024"],
+        ["modifyvm", "{{.Name}}", "--cpus", "2"]
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "provisioning/install.sh"
+    },
+    {
+      "type": "file",
+      "source": "provisioning/system-setup.sh",
+      "destination": "/mnt/system-setup.sh"
+    },
+    {
+      "type": "shell",
+      "inline": [
+        "chmod +x /mnt/system-setup.sh",
+        "chroot /mnt /system-setup.sh",
+        "rm /mnt/system-setup.sh"
+      ]
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "voidlinux-dev-{{.Provider}}-{{user `version`}}.box",
+      "vagrantfile_template": "provisioning/Vagrantfile"
+    }
+  ]
+}
