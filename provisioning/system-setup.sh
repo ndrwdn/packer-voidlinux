@@ -43,7 +43,7 @@ cd /home/vagrant
 git clone https://github.com/ndrwdn/dotfiles.git
 ./dotfiles/makesymlinks.sh
 
-vim +PlugClean! +PlugUpdate +qall
+vim +PlugClean! +PlugUpdate +qall >/dev/null 2>&1
 
 echo export PAGER=less >> .zshrc.local
 SETUP_VAGRANT_USER_EOF
