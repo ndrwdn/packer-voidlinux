@@ -23,8 +23,8 @@
       "ssh_pty": true,
       "shutdown_command": "sudo poweroff",
       "vboxmanage": [
-        ["modifyvm", "{{.Name}}", "--memory", "1024"],
-        ["modifyvm", "{{.Name}}", "--cpus", "2"]
+        ["modifyvm", "{{ .Name }}", "--memory", "1024"],
+        ["modifyvm", "{{ .Name }}", "--cpus", "2"]
       ]
     }
   ],
@@ -39,6 +39,11 @@
       "destination": "/mnt/system-setup.sh"
     },
     {
+      "type": "file",
+      "source": "provisioning/files/set-hostname",
+      "destination": "/mnt/set-hostname"
+    },
+    {
       "type": "shell",
       "inline": [
         "chmod +x /mnt/system-setup.sh",
@@ -48,10 +53,23 @@
     }
   ],
   "post-processors": [
-    {
-      "type": "vagrant",
-      "output": "voidlinux-dev-{{.Provider}}-{{user `version`}}.box",
-      "vagrantfile_template": "provisioning/Vagrantfile"
-    }
+    [
+      {
+        "type": "vagrant",
+        "vagrantfile_template": "provisioning/Vagrantfile",
+        "compression_level": 9,
+        "output": "voidlinux-dev-{{ .Provider }}-{{ user `version` }}.box"
+      },
+      {
+        "type": "atlas",
+        "artifact": "ndrwdn/voidlinux-dev",
+        "artifact_type": "vagrant.box",
+        "metadata": {
+          "description": "Void Linux Dev Workstation",
+          "provider": "virtualbox",
+          "version": "{{ user `version` }}"
+        }
+      }
+    ]
   ]
 }

@@ -8,7 +8,9 @@ chmod 755 /
 chmod 755 /var
 chsh -s /bin/bash root
 
-echo void-dev > /etc/hostname
+mv /set-hostname /usr/sbin/set-hostname
+chmod u+x /usr/sbin/set-hostname
+/usr/sbin/set-hostname void-dev
 
 blkid | grep void-root | sed -e 's/.*UUID="\([^"]*\)".*/UUID=\1\t\/\text4\trw,noatime,nodiratime,discard\t0\t1/' >> /etc/fstab
 blkid | grep void-swap | sed -e 's/.*UUID="\([^"]*\)".*/UUID=\1\tswap\tswap\trw,noatime,nodiratime,discard\t0\t0/' >> /etc/fstab

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [[ $# -ne 1 ]]; then
+  echo "Usage: ${0} <new hostname>"
+  exit 1
+fi
+
+HOSTNAME=$1
+hostname $HOSTNAME
+echo $HOSTNAME > /etc/hostname
