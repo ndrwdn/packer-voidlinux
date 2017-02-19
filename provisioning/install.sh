@@ -38,6 +38,8 @@ echo Y | xbps-install -SR http://repo.voidlinux.eu/current -yr /mnt \
   vim \
   git \
   git-perl \
+  tree \
+  ripgrep \
   zsh \
   tmux \
   virtualbox-ose-guest
