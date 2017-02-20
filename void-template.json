@@ -50,6 +50,10 @@
         "chroot /mnt /system-setup.sh",
         "rm /mnt/system-setup.sh"
       ]
+    },
+    {
+      "type": "shell",
+      "script": "provisioning/cleanup.sh"
     }
   ],
   "post-processors": [
