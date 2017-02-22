@@ -23,10 +23,7 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "en_US.UTF-8 UTF-8" >> /etc/default/libc-locales
 xbps-reconfigure -f glibc-locales
 
-
-ln -s /etc/sv/dhcpcd /etc/runit/runsvdir/default/
-ln -s /etc/sv/sshd /etc/runit/runsvdir/default/
-
+ln -s /etc/sv/{dhcpcd,sshd,salt-minion} /etc/runit/runsvdir/default/
 
 groupadd vagrant
 useradd --password $(openssl passwd -crypt 'vagrant') --create-home --gid vagrant --groups vagrant,users,wheel -s /usr/bin/zsh vagrant
