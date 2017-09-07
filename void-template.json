@@ -65,14 +65,9 @@
         "output": "voidlinux-dev-{{ .Provider }}-{{ user `version` }}.box"
       },
       {
-        "type": "atlas",
-        "artifact": "ndrwdn/voidlinux-dev",
-        "artifact_type": "vagrant.box",
-        "metadata": {
-          "description": "Void Linux Dev Workstation",
-          "provider": "virtualbox",
-          "version": "{{ user `version` }}"
-        }
+        "type": "vagrant-cloud",
+        "box_tag": "ndrwdn/voidlinux-dev",
+        "version": "{{ user `version` }}"
       }
     ]
   ]
