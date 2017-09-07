@@ -8,3 +8,4 @@ fi
 HOSTNAME=$1
 hostname $HOSTNAME
 echo $HOSTNAME > /etc/hostname
+sed -i -e "s/^\(127\.0\.0\.1.*localhost\).*/\1 $HOSTNAME/" /etc/hosts
