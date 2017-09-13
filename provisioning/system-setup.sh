@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
-set -x
+set -ex
 
 chown root:root /
 chmod 755 /
@@ -37,9 +36,13 @@ chmod 0600 /home/vagrant/.ssh/authorized_keys
 
 cat << SETUP_VAGRANT_USER_EOF > setup.sh
 #!/usr/bin/env bash
+
+set -ex
+
 cd /home/vagrant
 
-git clone https://github.com/ndrwdn/dotfiles.git
+ssh-keyscan github.com >> ~/.ssh/known_hosts
+git clone git@github.com:ndrwdn/dotfiles.git
 ./dotfiles/makesymlinks.sh
 
 vim -T dumb -c 'PlugInstall | quitall' >/dev/null
@@ -47,6 +50,8 @@ emacs --batch --script ~/.emacs.d/init.el >/dev/null 2>&1
 
 echo export PAGER=less >> .zshrc.local
 SETUP_VAGRANT_USER_EOF
+chown -R vagrant:vagrant ${SSH_AUTH_SOCK_DIR}
 chown vagrant:vagrant setup.sh
 sudo -u vagrant sh setup.sh
 rm -rf setup.sh
+chown -R root:root ${SSH_AUTH_SOCK_DIR}

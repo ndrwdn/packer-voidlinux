@@ -46,8 +46,15 @@
     {
       "type": "shell",
       "inline": [
+        "set -ex",
+        "export SSH_AUTH_SOCK_DIR=$(dirname ${SSH_AUTH_SOCK})",
+        "export CHROOT_SSH_AUTH_SOCK_DIR=$(readlink -m /mnt/${SSH_AUTH_SOCK_DIR})",
+        "mkdir -p ${CHROOT_SSH_AUTH_SOCK_DIR}",
+        "mount --bind ${SSH_AUTH_SOCK_DIR} ${CHROOT_SSH_AUTH_SOCK_DIR}",
         "chmod +x /mnt/system-setup.sh",
         "chroot /mnt /system-setup.sh",
+        "umount ${CHROOT_SSH_AUTH_SOCK_DIR}",
+        "rm -rf ${CHROOT_SSH_AUTH_SOCK_DIR}",
         "rm /mnt/system-setup.sh"
       ]
     },

@@ -34,6 +34,7 @@ echo Y | xbps-install -SR http://repo.voidlinux.eu/current -yr /mnt \
   lvm2 \
   grub \
   lsof \
+  htop \
   curl \
   vim \
   emacs \
