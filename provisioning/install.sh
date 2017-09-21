@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
-set -x
+set -ex
 
 xbps-install -Sy gptfdisk
 
@@ -15,8 +14,8 @@ sgdisk --new=2:0:0 --typecode=2:8e00 --change-name=2:"Void Linux LVM Partition" 
 pvcreate /dev/sda2
 vgcreate VoidVolGroup /dev/sda2
 
-lvcreate -L 10.5G VoidVolGroup -n VoidRoot
-lvcreate -l 100%FREE VoidVolGroup -n VoidSwap
+lvcreate -L 512M VoidVolGroup -n VoidSwap
+lvcreate -l +100%FREE VoidVolGroup -n VoidRoot
 
 mkfs.ext4 -L void-root /dev/mapper/VoidVolGroup-VoidRoot
 mkswap -L void-swap /dev/mapper/VoidVolGroup-VoidSwap

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
-set -x
+set -ex
 
 rm /mnt/var/cache/xbps/*.xbps{,.sig}
 

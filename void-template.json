@@ -16,7 +16,7 @@
         "<enter>"
       ],
       "hard_drive_interface": "sata",
-      "disk_size": 12288,
+      "disk_size": 65536,
       "ssh_username": "root",
       "ssh_password": "voidlinux",
       "ssh_wait_timeout": "2m",
