@@ -5,8 +5,8 @@
   "builders": [
     {
       "type": "virtualbox-iso",
-      "iso_url": "https://repo.voidlinux.eu/live/current/void-live-x86_64-20170220.iso",
-      "iso_checksum": "eae521df432b6b6a89b9dadd1ae781e73174c270f13805837b00d19c8747a043",
+      "iso_url": "https://repo.voidlinux.eu/live/current/void-live-x86_64-20171007.iso",
+      "iso_checksum": "a425a42481f22fc22562733c5e32e0e054e80ba68c25236850ec00ea2a31264e",
       "iso_checksum_type": "sha256",
       "guest_os_type": "Linux_64",
       "guest_additions_mode": "disable",
@@ -23,8 +23,8 @@
       "ssh_pty": true,
       "shutdown_command": "sudo poweroff",
       "vboxmanage": [
-        ["modifyvm", "{{ .Name }}", "--memory", "1024"],
-        ["modifyvm", "{{ .Name }}", "--cpus", "2"]
+        ["modifyvm", "{{ .Name }}", "--memory", "256"],
+        ["modifyvm", "{{ .Name }}", "--cpus", "1"]
       ]
     }
   ],

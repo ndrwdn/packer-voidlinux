@@ -41,6 +41,8 @@ echo Y | xbps-install -SR http://repo.voidlinux.eu/current -yr /mnt \
   git-perl \
   tree \
   ripgrep \
+  fzf \
+  xclip \
   zsh \
   tmux \
   salt \
