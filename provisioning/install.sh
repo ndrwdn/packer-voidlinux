@@ -46,6 +46,8 @@ echo Y | xbps-install -SR http://repo.voidlinux.eu/current -yr /mnt \
   zsh \
   tmux \
   salt \
+  socklog \
+  socklog-void \
   virtualbox-ose-guest
 
 cp -a /etc/resolv.conf /mnt/etc/resolv.conf

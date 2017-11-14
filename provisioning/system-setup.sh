@@ -22,10 +22,10 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "en_US.UTF-8 UTF-8" >> /etc/default/libc-locales
 xbps-reconfigure -f glibc-locales
 
-ln -s /etc/sv/{dhcpcd,sshd,salt-minion} /etc/runit/runsvdir/default/
+ln -s /etc/sv/{dhcpcd,sshd,salt-minion,socklog-unix,nanoklogd} /etc/runit/runsvdir/default/
 
 groupadd vagrant
-useradd --password $(openssl passwd -crypt 'vagrant') --create-home --gid vagrant --groups vagrant,users,wheel -s /usr/bin/zsh vagrant
+useradd --password $(openssl passwd -crypt 'vagrant') --create-home --gid vagrant --groups vagrant,users,wheel,socklog -s /usr/bin/zsh vagrant
 echo 'Defaults env_keep += "SSH_AUTH_SOCK"' > /etc/sudoers.d/10_vagrant
 echo 'vagrant ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers.d/10_vagrant
 chmod 0440 /etc/sudoers.d/10_vagrant
