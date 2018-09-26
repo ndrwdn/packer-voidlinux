@@ -54,4 +54,6 @@ chown -R vagrant:vagrant ${SSH_AUTH_SOCK_DIR}
 chown vagrant:vagrant setup.sh
 sudo -u vagrant sh setup.sh
 rm -rf setup.sh
+mkdir -p /root/.config/htop
+cp /home/vagrant/.config/htop/htoprc /root/.config/htop/htoprc
 chown -R root:root ${SSH_AUTH_SOCK_DIR}
