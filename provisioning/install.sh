@@ -38,7 +38,6 @@ echo Y | xbps-install -SR http://repo.voidlinux.eu/current -yr /mnt \
   vim \
   emacs \
   git \
-  git-perl \
   tree \
   ripgrep \
   fzf \
