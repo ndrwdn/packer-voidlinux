@@ -46,7 +46,7 @@ git clone git@github.com:ndrwdn/dotfiles.git
 ./dotfiles/makesymlinks.sh
 
 vim -T dumb -c 'PlugInstall | quitall' >/dev/null
-emacs --batch --script ~/.emacs.d/init.el >/dev/null 2>&1
+emacs --batch --eval "(setq network-security-level 'low)" --script ~/.emacs.d/init.el >/dev/null 2>&1
 
 echo export PAGER=less >> .zshrc.local
 SETUP_VAGRANT_USER_EOF
