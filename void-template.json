@@ -24,7 +24,8 @@
       "shutdown_command": "sudo poweroff",
       "vboxmanage": [
         ["modifyvm", "{{ .Name }}", "--memory", "256"],
-        ["modifyvm", "{{ .Name }}", "--cpus", "1"]
+        ["modifyvm", "{{ .Name }}", "--cpus", "1"],
+        ["modifyvm", "{{ .Name }}", "--audio", "none"]
       ]
     }
   ],
