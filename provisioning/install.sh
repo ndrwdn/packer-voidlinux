@@ -2,7 +2,8 @@
 
 set -ex
 
-xbps-install -Sy gptfdisk
+xbps-install -Syu
+xbps-install -y gptfdisk
 
 sgdisk --zap-all /dev/sda
 dd if=/dev/zero of=/dev/sda bs=512 count=2048
@@ -28,7 +29,7 @@ mount --rbind /dev /mnt/dev
 mount --rbind /proc /mnt/proc
 mount --rbind /sys /mnt/sys
 
-echo Y | xbps-install -SR http://repo.voidlinux.eu/current -yr /mnt \
+echo Y | xbps-install -SR https://alpha.de.repo.voidlinux.org/current -yr /mnt \
   base-system \
   lvm2 \
   grub \
@@ -47,6 +48,7 @@ echo Y | xbps-install -SR http://repo.voidlinux.eu/current -yr /mnt \
   salt \
   socklog \
   socklog-void \
-  virtualbox-ose-guest
+  virtualbox-ose-guest \
+  virtualbox-ose-guest-dkms
 
 cp -a /etc/resolv.conf /mnt/etc/resolv.conf

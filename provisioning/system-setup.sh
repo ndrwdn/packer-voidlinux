@@ -45,7 +45,7 @@ ssh-keyscan github.com >> ~/.ssh/known_hosts
 git clone git@github.com:ndrwdn/dotfiles.git
 ./dotfiles/makesymlinks.sh
 
-vim -T dumb -c 'PlugInstall | quitall' >/dev/null
+vim -T dumb -E -c 'PlugInstall | quitall' >/dev/null
 emacs --batch --eval "(setq network-security-level 'low)" --script ~/.emacs.d/init.el >/dev/null 2>&1
 
 echo export PAGER=less >> .zshrc.local

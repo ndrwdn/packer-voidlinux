@@ -5,8 +5,8 @@
   "builders": [
     {
       "type": "virtualbox-iso",
-      "iso_url": "https://repo.voidlinux.eu/live/current/void-live-x86_64-20171007.iso",
-      "iso_checksum": "a425a42481f22fc22562733c5e32e0e054e80ba68c25236850ec00ea2a31264e",
+      "iso_url": "https://alpha.de.repo.voidlinux.org/live/current/void-live-x86_64-20191109.iso",
+      "iso_checksum": "c471733859ff0a315e3848fe39c153e22700b1baa039453358643bbae93b7058",
       "iso_checksum_type": "sha256",
       "guest_os_type": "Linux_64",
       "guest_additions_mode": "disable",
